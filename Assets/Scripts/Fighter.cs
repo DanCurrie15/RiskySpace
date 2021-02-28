@@ -29,6 +29,11 @@ public class Fighter : MonoBehaviour
         if (this.gameObject.CompareTag("Player"))
         {
             FighterManager.Instance.RemoveFighter(this.gameObject);
+            if (_orbitingPlanet != null)
+            {
+                _orbitingPlanet.GetComponent<Planet>().UnregisterFighter(this.gameObject);
+                _orbitingPlanet = null;
+            }
         }            
     }
 

@@ -236,10 +236,13 @@ MonoBehaviour:
   spawnRate: 4
   spawnPoint: {fileID: 2128734534}
   planetRenderer: {fileID: 11388986}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 0.5
   orbitingFighters: []
+  r: 1
+  g: 1
+  b: 1
 --- !u!1 &118438314
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,10 +432,13 @@ MonoBehaviour:
   spawnRate: 4
   spawnPoint: {fileID: 2022647274}
   planetRenderer: {fileID: 173123108}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 0.5
   orbitingFighters: []
+  r: 1
+  g: 1
+  b: 1
 --- !u!1 &176775660
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +850,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e7280866a06df45d58cd27fd01cfa7b5, type: 2}
+  - {fileID: 2100000, guid: 9b0e9b10d8b654426ae99bb03c146158, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -905,10 +911,13 @@ MonoBehaviour:
   spawnRate: 8
   spawnPoint: {fileID: 176775660}
   planetRenderer: {fileID: 666225621}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 0.5
   orbitingFighters: []
+  r: 1
+  g: 1
+  b: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,11 +1092,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730318380}
   m_CullTransparentMesh: 1
---- !u!1 &766803108 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-  m_PrefabInstance: {fileID: 932696644906475971}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &775146181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,10 +1235,13 @@ MonoBehaviour:
   spawnRate: 4
   spawnPoint: {fileID: 1444790660}
   planetRenderer: {fileID: 856588575}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 0.5
   orbitingFighters: []
+  r: 1
+  g: 1
+  b: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,10 +1438,13 @@ MonoBehaviour:
   spawnRate: 4
   spawnPoint: {fileID: 775146181}
   planetRenderer: {fileID: 1085900284}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 0.5
   orbitingFighters: []
+  r: 1
+  g: 1
+  b: 1
 --- !u!1 &1180758226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,10 +1558,13 @@ MonoBehaviour:
   spawnRate: 4
   spawnPoint: {fileID: 253022598}
   planetRenderer: {fileID: 1180758228}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 0.5
   orbitingFighters: []
+  r: 1
+  g: 1
+  b: 1
 --- !u!1 &1266697562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,10 +1774,13 @@ MonoBehaviour:
   spawnRate: 2
   spawnPoint: {fileID: 464483209}
   planetRenderer: {fileID: 1431038941}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 1
   orbitingFighters: []
+  r: 0
+  g: 1
+  b: 0.5
 --- !u!1 &1444790660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,15 +1963,13 @@ MonoBehaviour:
   spawnRate: 2
   spawnPoint: {fileID: 1266697562}
   planetRenderer: {fileID: 1682772746}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 0
   orbitingFighters: []
---- !u!1 &1699124405 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-  m_PrefabInstance: {fileID: 3769341747459302104}
-  m_PrefabAsset: {fileID: 0}
+  r: 0.5
+  g: 0
+  b: 1
 --- !u!1 &1715037203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,10 +2083,13 @@ MonoBehaviour:
   spawnRate: 4
   spawnPoint: {fileID: 538853030}
   planetRenderer: {fileID: 1715037205}
-  playerFighter: {fileID: 766803108}
-  enemyFighter: {fileID: 1699124405}
+  playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+  enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   _ownership: 0.5
   orbitingFighters: []
+  r: 1
+  g: 1
+  b: 1
 --- !u!1 &2022647274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,8 +2149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42aa675be27344b580c482104992fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighters:
-  - {fileID: 766803108}
+  fighters: []
   selectedFighters: []
   targetPlanet: {fileID: 0}
 --- !u!4 &2085242092
@@ -2180,125 +2196,3 @@ Transform:
   m_Father: {fileID: 11388988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &932696644906475971
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_Name
-      value: FighterA
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6866827040838050827, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
-      propertyPath: _orbitingPlanet
-      value: 
-      objectReference: {fileID: 1682772744}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
---- !u!1001 &3769341747459302104
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1621945563429970471, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: _orbitingPlanet
-      value: 
-      objectReference: {fileID: 1431038939}
-    - target: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_Name
-      value: FighterB
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
