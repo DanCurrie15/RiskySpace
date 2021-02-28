@@ -235,6 +235,11 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 4
   spawnPoint: {fileID: 2128734534}
+  planetRenderer: {fileID: 11388986}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 0.5
+  orbitingFighters: []
 --- !u!1 &118438314
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +428,11 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 4
   spawnPoint: {fileID: 2022647274}
+  planetRenderer: {fileID: 173123108}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 0.5
+  orbitingFighters: []
 --- !u!1 &176775660
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +904,11 @@ MonoBehaviour:
   orbitDistance: 7.5
   spawnRate: 8
   spawnPoint: {fileID: 176775660}
+  planetRenderer: {fileID: 666225621}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 0.5
+  orbitingFighters: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,6 +1230,11 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 4
   spawnPoint: {fileID: 1444790660}
+  planetRenderer: {fileID: 856588575}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 0.5
+  orbitingFighters: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1430,11 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 4
   spawnPoint: {fileID: 775146181}
+  planetRenderer: {fileID: 1085900284}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 0.5
+  orbitingFighters: []
 --- !u!1 &1180758226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180758226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0, z: -15}
+  m_LocalPosition: {x: 0, y: 0, z: -15}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 253022599}
@@ -1522,6 +1547,11 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 4
   spawnPoint: {fileID: 253022598}
+  planetRenderer: {fileID: 1180758228}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 0.5
+  orbitingFighters: []
 --- !u!1 &1266697562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,7 +1738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431038939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.5, y: 0, z: 0}
+  m_LocalPosition: {x: 30, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 464483210}
@@ -1730,6 +1760,11 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 2
   spawnPoint: {fileID: 464483209}
+  planetRenderer: {fileID: 1431038941}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 1
+  orbitingFighters: []
 --- !u!1 &1444790660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682772744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.9, y: 0, z: 0}
+  m_LocalPosition: {x: -30, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1266697563}
@@ -1911,6 +1946,16 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 2
   spawnPoint: {fileID: 1266697562}
+  planetRenderer: {fileID: 1682772746}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 0
+  orbitingFighters: []
+--- !u!1 &1699124405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
+  m_PrefabInstance: {fileID: 3769341747459302104}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1715037203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2068,11 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 4
   spawnPoint: {fileID: 538853030}
+  planetRenderer: {fileID: 1715037205}
+  playerFighter: {fileID: 766803108}
+  enemyFighter: {fileID: 1699124405}
+  _ownership: 0.5
+  orbitingFighters: []
 --- !u!1 &2022647274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,6 +2134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fighters:
   - {fileID: 766803108}
+  selectedFighters: []
   targetPlanet: {fileID: 0}
 --- !u!4 &2085242092
 Transform:
@@ -2146,7 +2197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2154,7 +2205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7
+      value: -2.25
       objectReference: {fileID: 0}
     - target: {fileID: 932696644312178027, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2184,6 +2235,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6866827040838050827, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
+      propertyPath: _orbitingPlanet
+      value: 
+      objectReference: {fileID: 1682772744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
 --- !u!1001 &3769341747459302104
@@ -2193,6 +2248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1621945563429970471, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
+      propertyPath: _orbitingPlanet
+      value: 
+      objectReference: {fileID: 1431038939}
     - target: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
       propertyPath: m_Name
       value: FighterB
@@ -2203,7 +2262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2211,7 +2270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7
+      value: -2.25
       objectReference: {fileID: 0}
     - target: {fileID: 3769341748212183622, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
       propertyPath: m_LocalRotation.w

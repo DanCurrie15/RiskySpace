@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -22,11 +21,26 @@ public class GameManager : MonoBehaviour
                 if (hit.transform.CompareTag("Planet"))
                 {
                     // if no units selected, select units at this planet
+                    if (FighterManager.Instance.selectedFighters.Count == 0)
+                    {
+                        foreach(GameObject fighter in hit.transform.GetComponent<Planet>().orbitingFighters)
+                        {
+                            if (fighter.CompareTag("Player"))
+                            {
+                                FighterManager.Instance.AddSelectedFighters(fighter);
+                            }
+                        }
+                    }
                     // if units are selected, move them to this planet
+                    else
+                    {
+                        FighterManager.Instance.MoveFighters(hit.transform.gameObject);
+                    }
                 }
                 else
                 {
                     // deselect units
+                    FighterManager.Instance.DeselectAllFighters();
                 }
             }
         }
