@@ -10,7 +10,9 @@ public class Planet : MonoBehaviour
     public Renderer planetRenderer;
 
     public GameObject playerFighter;
+    public int orbitingPlayers;
     public GameObject enemyFighter;
+    public int orbitingEnemies;
 
     [Range(0f, 1f)]
     public float _ownership; // 0 - player, 1 - enemy, 0.5 - neutral
@@ -37,6 +39,8 @@ public class Planet : MonoBehaviour
 
     private void Start()
     {
+        orbitingPlayers = 0;
+        orbitingEnemies = 0;
         _nextSpawn = 0;
         _fightRate = 1;
         planetRenderer.material.color = new Color(r, g, b, 1f);
@@ -70,12 +74,14 @@ public class Planet : MonoBehaviour
                     numEnemy++;
                 }
             }
-            else
+            /*else
             {
                 orbitingFighters.Remove(fighter);
                 return;
-            }
+            }*/
         }
+        orbitingPlayers = numPlayer;
+        orbitingEnemies = numEnemy;
 
         if (numPlayer > 0 && numEnemy == 0 && _ownership > 0)
         {

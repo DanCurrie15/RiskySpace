@@ -6,7 +6,6 @@ public class FighterManager : Singleton<FighterManager>
 {
     public List<GameObject> fighters = new List<GameObject>();
     public List<GameObject> selectedFighters = new List<GameObject>();
-    public GameObject targetPlanet;
 
     public void MoveFighters(GameObject targetPlanet)
     {
@@ -20,10 +19,15 @@ public class FighterManager : Singleton<FighterManager>
     public void AddFighter(GameObject fighter)
     {
         fighters.Add(fighter);
+        UIManager.Instance.UpdateTeamAText(fighters.Count);
     }
     public void RemoveFighter(GameObject fighter)
     {
         fighters.Remove(fighter);
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateTeamAText(fighters.Count);
+        }        
     }
 
     public void AddSelectedFighters(GameObject fighter)

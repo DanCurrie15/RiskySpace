@@ -21,20 +21,36 @@ public class Fighter : MonoBehaviour
         if (this.gameObject.CompareTag("Player"))
         {
             FighterManager.Instance.AddFighter(this.gameObject);
-        }        
+        }
+        else if (this.gameObject.CompareTag("Enemy"))
+        {
+            EnemyManager.Instance.AddFighter(this.gameObject);
+        }
     }
 
     private void OnDisable()
     {
+        if (_orbitingPlanet != null)
+        {
+            _orbitingPlanet.GetComponent<Planet>().UnregisterFighter(this.gameObject);
+            _orbitingPlanet = null;
+        }
+
         if (this.gameObject.CompareTag("Player"))
         {
-            FighterManager.Instance.RemoveFighter(this.gameObject);
-            if (_orbitingPlanet != null)
+            if (FighterManager.Instance != null)
             {
-                _orbitingPlanet.GetComponent<Planet>().UnregisterFighter(this.gameObject);
-                _orbitingPlanet = null;
+                FighterManager.Instance.RemoveFighter(this.gameObject);
+            }            
+            
+        }
+        else if (this.gameObject.CompareTag("Enemy"))
+        {
+            if (EnemyManager.Instance != null)
+            {
+                EnemyManager.Instance.RemoveFighter(this.gameObject);
             }
-        }            
+        }        
     }
 
     void Update()
