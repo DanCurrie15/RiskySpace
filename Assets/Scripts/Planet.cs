@@ -74,11 +74,6 @@ public class Planet : MonoBehaviour
                     numEnemy++;
                 }
             }
-            /*else
-            {
-                orbitingFighters.Remove(fighter);
-                return;
-            }*/
         }
         orbitingPlayers = numPlayer;
         orbitingEnemies = numEnemy;
@@ -96,8 +91,26 @@ public class Planet : MonoBehaviour
         else if (numEnemy > 0 && numPlayer > 0 && (Time.time >_nextFight))
         {
             _nextFight = Time.time + _fightRate;
-            int rand = Random.Range(0, orbitingFighters.Count);
-            Destroy(orbitingFighters[rand], 1f);
+            int rand = Random.Range(0, 2);
+            foreach(GameObject fighter in orbitingFighters)
+            {
+                if (rand == 0)
+                {
+                    if (fighter.CompareTag("Player"))
+                    {
+                        Destroy(fighter, 1f);
+                        break;
+                    }
+                }
+                else
+                {
+                    if (fighter.CompareTag("Enemy"))
+                    {
+                        Destroy(fighter, 1f);
+                        break;
+                    }
+                }                
+            }
         }
         else if ((Time.time > _nextSpawn))
         {
