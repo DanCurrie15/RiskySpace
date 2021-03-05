@@ -41,13 +41,15 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void WinGame()
+    public void GameOver(bool win)
     {
-
-    }
-
-    public void LoseGame()
-    {
-
+        if (win)
+        {
+            UIManager.Instance.ShowGameOverPanel("A WINNER IS YOU :D");
+        }
+        else
+        {
+            UIManager.Instance.ShowGameOverPanel("OH NO YOU LOST :(");
+        }
     }
 }

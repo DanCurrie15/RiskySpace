@@ -41,6 +41,7 @@ public class Fighter : MonoBehaviour
             if (FighterManager.Instance != null)
             {
                 FighterManager.Instance.RemoveFighter(this.gameObject);
+                FighterManager.Instance.RemoveSelectedFighter(this.gameObject);
             }            
             
         }
@@ -49,6 +50,7 @@ public class Fighter : MonoBehaviour
             if (EnemyManager.Instance != null)
             {
                 EnemyManager.Instance.RemoveFighter(this.gameObject);
+                EnemyManager.Instance.RemoveSelectedFighter(this.gameObject);
             }
         }        
     }

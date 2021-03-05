@@ -24,6 +24,10 @@ public class FighterManager : Singleton<FighterManager>
     public void RemoveFighter(GameObject fighter)
     {
         fighters.Remove(fighter);
+        if (fighters.Count < 1)
+        {
+            GameManager.Instance.GameOver(false);
+        }
         if (UIManager.Instance != null)
         {
             UIManager.Instance.UpdateTeamAText(fighters.Count);
@@ -33,6 +37,11 @@ public class FighterManager : Singleton<FighterManager>
     public void AddSelectedFighters(GameObject fighter)
     {
         selectedFighters.Add(fighter);
+    }
+
+    public void RemoveSelectedFighter(GameObject fighter)
+    {
+        selectedFighters.Remove(fighter);
     }
 
     public void DeselectAllFighters()
