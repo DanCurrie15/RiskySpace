@@ -11,10 +11,13 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private bool _foundMovableFighters = false;
 
+    private float _actionRate = 1f;
+    private float _nextAction = 0f;
+
     // Update is called once per frame
     void Update()
     {
-        if (selectedFighters.Count < 1)
+        if (selectedFighters.Count < 1 && Time.time > _nextAction)
         {
             if (fighters.Count < 10 && FighterManager.Instance.fighters.Count < 10)
             {
@@ -32,6 +35,7 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 MidGameState();
             }
+            _nextAction = Time.time + _actionRate;
         }
     }
 
@@ -129,7 +133,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 float distance = Mathf.Infinity;
                 foreach (Planet planet1 in planets)
                 {
-                    if (planet1._ownership < 1 && planet1.orbitingEnemies < planet1.orbitingPlayers)
+                    if (planet1._ownership <= 1 && planet1.orbitingEnemies < planet1.orbitingPlayers)
                     {
                         float tempDistance = Vector3.Distance(planet.transform.position, planet1.transform.position);
                         if (tempDistance < distance)
@@ -206,7 +210,12 @@ public class EnemyManager : Singleton<EnemyManager>
                     if (planet1._ownership < 1)
                     {
                         float tempDistance = Vector3.Distance(planet.transform.position, planet1.transform.position);
-                        if (tempDistance < distance)
+                        if (planet1._ownership == 0 && planet.orbitingPlayers > planet.orbitingEnemies)
+                        {
+                            moveToPlanet = planet1.gameObject;
+                            break;
+                        }
+                        else if (tempDistance < distance)
                         {
                             distance = tempDistance;
                             moveToPlanet = planet1.gameObject;
