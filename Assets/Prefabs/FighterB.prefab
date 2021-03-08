@@ -109,5 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6631ff99cf98b444fa94e8899e3b57e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitingPlanet: {fileID: 0}
-  targetPlanet: {fileID: 0}
+  _orbitingPlanet: {fileID: 0}

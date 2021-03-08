@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fighter : MonoBehaviour
 {
     public GameObject _orbitingPlanet;
+    public Outline outline;
     private GameObject _targetPlanet;
     private bool _isOrbiting;
     private float _orbitSpeed = 20f;
@@ -21,6 +22,7 @@ public class Fighter : MonoBehaviour
         if (this.gameObject.CompareTag("Player"))
         {
             FighterManager.Instance.AddFighter(this.gameObject);
+            outline.enabled = false;
         }
         else if (this.gameObject.CompareTag("Enemy"))
         {
@@ -30,6 +32,8 @@ public class Fighter : MonoBehaviour
 
     private void OnDisable()
     {
+        SoundManager.Instance.PlaySoundEffect(SoundEffect.ShipExplosion);
+
         if (_orbitingPlanet != null)
         {
             _orbitingPlanet.GetComponent<Planet>().UnregisterFighter(this.gameObject);

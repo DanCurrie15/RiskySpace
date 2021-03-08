@@ -98,6 +98,7 @@ public class Planet : MonoBehaviour
                 {
                     if (fighter.CompareTag("Player"))
                     {
+                        SoundManager.Instance.PlaySoundEffect(SoundEffect.EnemyLaser);
                         Destroy(fighter, 1f);
                         break;
                     }
@@ -106,6 +107,7 @@ public class Planet : MonoBehaviour
                 {
                     if (fighter.CompareTag("Enemy"))
                     {
+                        SoundManager.Instance.PlaySoundEffect(SoundEffect.PlayerLaser);
                         Destroy(fighter, 1f);
                         break;
                     }

@@ -21,18 +21,22 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             if (fighters.Count < 10 && FighterManager.Instance.fighters.Count < 10)
             {
+                //Debug.Log("Enemy State: Opening");
                 OpeningState();
             }
             else if (FighterManager.Instance.fighters.Count - fighters.Count > 30f)
             {
+                //Debug.Log("Enemy State: End Game Losing");
                 EndGameLosing();
             }
             else if (fighters.Count - FighterManager.Instance.fighters.Count > 30f)
             {
+                //Debug.Log("Enemy State: End Game Winning");
                 EndGameWinning();
             }
             else
             {
+                //Debug.Log("Enemy State: Mid Game");
                 MidGameState();
             }
             _nextAction = Time.time + _actionRate;
@@ -94,15 +98,15 @@ public class EnemyManager : Singleton<EnemyManager>
             if (_foundMovableFighters)
             {
                 float distance = Mathf.Infinity;
-                foreach (Planet planet1 in planets)
+                foreach (Planet planetToLocate in planets)
                 {
-                    if (planet1._ownership < 1 && planet1.orbitingEnemies < 1)
+                    if (planetToLocate._ownership < 1 && planetToLocate.orbitingEnemies < 1)
                     {
-                        float tempDistance = Vector3.Distance(planet.transform.position, planet1.transform.position);
+                        float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
                         {
                             distance = tempDistance;
-                            moveToPlanet = planet1.gameObject;
+                            moveToPlanet = planetToLocate.gameObject;
                         }
                     }
                 }
@@ -120,9 +124,9 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet._ownership >= 1 && planet.orbitingEnemies > 8 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet._ownership >= 1 && planet.orbitingEnemies > 4 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     selectedFighters.Add(planet.orbitingFighters[i]);
                     _foundMovableFighters = true;
@@ -131,15 +135,15 @@ public class EnemyManager : Singleton<EnemyManager>
             if (_foundMovableFighters)
             {
                 float distance = Mathf.Infinity;
-                foreach (Planet planet1 in planets)
+                foreach (Planet planetToLocate in planets)
                 {
-                    if (planet1._ownership <= 1 && planet1.orbitingEnemies < planet1.orbitingPlayers)
+                    if (planetToLocate._ownership <= 1 && planetToLocate.orbitingEnemies < planetToLocate.orbitingPlayers)
                     {
-                        float tempDistance = Vector3.Distance(planet.transform.position, planet1.transform.position);
+                        float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
                         {
                             distance = tempDistance;
-                            moveToPlanet = planet1.gameObject;
+                            moveToPlanet = planetToLocate.gameObject;
                         }
                     }
                 }
@@ -168,15 +172,15 @@ public class EnemyManager : Singleton<EnemyManager>
             if (_foundMovableFighters)
             {
                 float distance = Mathf.Infinity;
-                foreach (Planet planet1 in planets)
+                foreach (Planet planetToLocate in planets)
                 {
-                    if (planet1._ownership <= 1 && (planet1.orbitingEnemies < 5 || planet1.orbitingPlayers < 5) && (planet != planet1))
+                    if (planetToLocate._ownership <= 1 && (planetToLocate.orbitingEnemies < 5 || planetToLocate.orbitingPlayers < 5) && (planet != planetToLocate))
                     {
-                        float tempDistance = Vector3.Distance(planet.transform.position, planet1.transform.position);
+                        float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
                         {
                             distance = tempDistance;
-                            moveToPlanet = planet1.gameObject;
+                            moveToPlanet = planetToLocate.gameObject;
                         }
                     }
                 }
@@ -204,28 +208,21 @@ public class EnemyManager : Singleton<EnemyManager>
             }
             if (_foundMovableFighters)
             {
-                float distance = Mathf.Infinity;
-                foreach (Planet planet1 in planets)
+                foreach (Planet plantToLocate in planets)
                 {
-                    if (planet1._ownership < 1)
+                    if (plantToLocate._ownership < 1 && plantToLocate.orbitingPlayers > plantToLocate.orbitingEnemies)
                     {
-                        float tempDistance = Vector3.Distance(planet.transform.position, planet1.transform.position);
-                        if (planet1._ownership == 0 && planet.orbitingPlayers > planet.orbitingEnemies)
-                        {
-                            moveToPlanet = planet1.gameObject;
-                            break;
-                        }
-                        else if (tempDistance < distance)
-                        {
-                            distance = tempDistance;
-                            moveToPlanet = planet1.gameObject;
-                        }
+                        moveToPlanet = plantToLocate.gameObject;
                     }
                 }
                 if (moveToPlanet != null)
                 {
                     MoveFighters(moveToPlanet);
                     _foundMovableFighters = false;
+                }
+                else
+                {
+                    selectedFighters.Clear();
                 }
             }
         }

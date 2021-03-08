@@ -37,15 +37,21 @@ public class FighterManager : Singleton<FighterManager>
     public void AddSelectedFighters(GameObject fighter)
     {
         selectedFighters.Add(fighter);
+        fighter.GetComponent<Fighter>().outline.enabled = true;
     }
 
     public void RemoveSelectedFighter(GameObject fighter)
     {
         selectedFighters.Remove(fighter);
+        fighter.GetComponent<Fighter>().outline.enabled = false;
     }
 
     public void DeselectAllFighters()
     {
+        foreach (GameObject fighter in selectedFighters)
+        {
+            fighter.GetComponent<Fighter>().outline.enabled = false;
+        }
         selectedFighters.Clear();
     }
 }
