@@ -84,6 +84,13 @@ public class Fighter : MonoBehaviour
         _orbitingPlanet.GetComponent<Planet>().UnregisterFighter(this.gameObject);
         _orbitingPlanet = null;
         _targetPlanet = targetPlanet;
-
+        if (this.gameObject.CompareTag("Player"))
+        {
+            SoundManager.Instance.PlaySoundEffect(SoundEffect.PlayerShipMoves);
+        }
+        else if (this.gameObject.CompareTag("Enemy"))
+        {
+            SoundManager.Instance.PlaySoundEffect(SoundEffect.EnemyShipMoves);
+        }
     }
 }

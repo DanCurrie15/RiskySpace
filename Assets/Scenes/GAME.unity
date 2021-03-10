@@ -1260,11 +1260,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundFX:
   - Effect: 0
-    Clip: {fileID: 8300000, guid: f947cfab8bb474cce94fe5e128431117, type: 3}
+    Clip: {fileID: 8300000, guid: eac3ed9b8b35c45f1b650fec209d37ea, type: 3}
   - Effect: 1
-    Clip: {fileID: 8300000, guid: f947cfab8bb474cce94fe5e128431117, type: 3}
+    Clip: {fileID: 8300000, guid: 710a3a596c2284bf3a7062eaced4ed9f, type: 3}
   - Effect: 4
     Clip: {fileID: 8300000, guid: 6b8e1020670bf424c891e9076cacfe99, type: 3}
+  - Effect: 2
+    Clip: {fileID: 8300000, guid: 6fc4b031b19df413cad3d921fce101c4, type: 3}
+  - Effect: 3
+    Clip: {fileID: 8300000, guid: 864a343ea40344130aaba8912f7f11fb, type: 3}
   SoundFXSource: {fileID: 669709417}
 --- !u!4 &669709419
 Transform:

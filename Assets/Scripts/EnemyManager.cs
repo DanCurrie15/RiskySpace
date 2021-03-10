@@ -11,7 +11,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private bool _foundMovableFighters = false;
 
-    private float _actionRate = 1f;
+    private float _actionRate = 2.5f;
     private float _nextAction = 0f;
 
     // Update is called once per frame
