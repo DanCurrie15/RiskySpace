@@ -223,6 +223,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 else
                 {
                     selectedFighters.Clear();
+                    _foundMovableFighters = false;
                 }
             }
         }

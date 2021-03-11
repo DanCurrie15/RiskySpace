@@ -8,6 +8,7 @@ public class Planet : MonoBehaviour
     public float spawnRate;
     public GameObject spawnPoint;
     public Renderer planetRenderer;
+    public Outline outline;
 
     public GameObject playerFighter;
     public int orbitingPlayers;
@@ -39,6 +40,7 @@ public class Planet : MonoBehaviour
 
     private void Start()
     {
+        outline.enabled = false;
         orbitingPlayers = 0;
         orbitingEnemies = 0;
         _nextSpawn = 0;
@@ -82,14 +84,18 @@ public class Planet : MonoBehaviour
         {
             planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, purplePlanet, (1f - _ownership) * Time.deltaTime * 0.3f);
             _ownership -= 0.0005f;
+            outline.enabled = false;
+            
         }
         else if (numEnemy > 0 && numPlayer == 0 && _ownership < 1)
         {
             planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, greenPlanet, _ownership * Time.deltaTime * 0.3f);
             _ownership += 0.0005f;
+            outline.enabled = false;
         }
         else if (numEnemy > 0 && numPlayer > 0 && (Time.time >_nextFight))
         {
+            outline.enabled = false;
             _nextFight = Time.time + _fightRate;
             int rand = Random.Range(0, 2);
             foreach(GameObject fighter in orbitingFighters)
@@ -123,12 +129,16 @@ public class Planet : MonoBehaviour
                 planetRenderer.material.color = purplePlanet;
                 SpawnShip(playerFighter);
                 _ownership = 0;
+                outline.enabled = true;
+                outline.OutlineColor = purplePlanet;
             }
             else if (_ownership >= 1 && numPlayer == 0)
             {
                 planetRenderer.material.color = greenPlanet;
                 SpawnShip(enemyFighter);
                 _ownership = 1;
+                outline.enabled = true;
+                outline.OutlineColor = greenPlanet;
             }          
         }
     }
