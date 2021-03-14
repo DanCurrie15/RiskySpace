@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fighter : MonoBehaviour
 {
     public GameObject _orbitingPlanet;
     public Outline outline;
+    public GameObject explosionPrefab;
+
     private GameObject _targetPlanet;
     private bool _isOrbiting;
     private float _orbitSpeed = 20f;
@@ -33,6 +33,7 @@ public class Fighter : MonoBehaviour
     private void OnDisable()
     {
         SoundManager.Instance.PlaySoundEffect(SoundEffect.ShipExplosion);
+        Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
 
         if (_orbitingPlanet != null)
         {

@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _orbitingPlanet: {fileID: 0}
   outline: {fileID: 0}
+  explosionPrefab: {fileID: 7420987319110310933, guid: cafd9328d33ab45829cf51a9a29c5e5e, type: 3}
 --- !u!195 &-1829732761751985828
 NavMeshAgent:
   m_ObjectHideFlags: 0

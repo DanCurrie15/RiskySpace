@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +10,14 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private bool _foundMovableFighters = false;
 
-    private float _actionRate = 2.5f;
+    private float _actionRate = 2.0f;
     private float _nextAction = 0f;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        _actionRate = GameManager.Instance.diffValue;
+    }
+
     void Update()
     {
         if (selectedFighters.Count < 1 && Time.time > _nextAction)
@@ -62,7 +65,7 @@ public class EnemyManager : Singleton<EnemyManager>
         fighters.Remove(fighter);
         if (fighters.Count < 1)
         {
-            GameManager.Instance.GameOver(true);
+            LevelManager.Instance.GameOver(true);
         }
         if (UIManager.Instance != null)
         {
@@ -114,6 +117,13 @@ public class EnemyManager : Singleton<EnemyManager>
                 {
                     MoveFighters(moveToPlanet);
                     _foundMovableFighters = false;
+                    break;
+                }
+                else
+                {
+                    selectedFighters.Clear();
+                    _foundMovableFighters = false;
+                    break;
                 }
             }
         }
@@ -151,6 +161,13 @@ public class EnemyManager : Singleton<EnemyManager>
                 {
                     MoveFighters(moveToPlanet);
                     _foundMovableFighters = false;
+                    break;
+                }
+                else
+                {
+                    selectedFighters.Clear();
+                    _foundMovableFighters = false;
+                    break;
                 }
             }
         }
@@ -188,6 +205,13 @@ public class EnemyManager : Singleton<EnemyManager>
                 {
                     MoveFighters(moveToPlanet);
                     _foundMovableFighters = false;
+                    break;
+                }
+                else
+                {
+                    selectedFighters.Clear();
+                    _foundMovableFighters = false;
+                    break;
                 }
             }
         }
@@ -210,7 +234,7 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 foreach (Planet plantToLocate in planets)
                 {
-                    if (plantToLocate._ownership < 1 && plantToLocate.orbitingPlayers > plantToLocate.orbitingEnemies)
+                    if (plantToLocate._ownership < 1 && (plantToLocate.orbitingPlayers > plantToLocate.orbitingEnemies))
                     {
                         moveToPlanet = plantToLocate.gameObject;
                     }
@@ -219,11 +243,13 @@ public class EnemyManager : Singleton<EnemyManager>
                 {
                     MoveFighters(moveToPlanet);
                     _foundMovableFighters = false;
+                    break;
                 }
                 else
                 {
                     selectedFighters.Clear();
                     _foundMovableFighters = false;
+                    break;
                 }
             }
         }

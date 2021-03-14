@@ -2,54 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class GameManager : Singleton<GameManager>
 {
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    public float diffValue = 2.0f;
+    public float musicVol = 1.0f;
+    public float skfVol = 0.5f;
 
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                if (hit.transform.CompareTag("Planet"))
-                {
-                    // if no units selected, select units at this planet
-                    if (FighterManager.Instance.selectedFighters.Count == 0)
-                    {
-                        foreach(GameObject fighter in hit.transform.GetComponent<Planet>().orbitingFighters)
-                        {
-                            if (fighter.CompareTag("Player"))
-                            {
-                                FighterManager.Instance.AddSelectedFighters(fighter);
-                            }
-                        }
-                    }
-                    // if units are selected, move them to this planet
-                    else
-                    {
-                        FighterManager.Instance.MoveFighters(hit.transform.gameObject);
-                    }
-                }
-                else
-                {
-                    // deselect units
-                    FighterManager.Instance.DeselectAllFighters();
-                }
-            }
-        }
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    public void GameOver(bool win)
+    public void SetDifficulty(string diff)
     {
-        if (win)
+        switch (diff)
         {
-            UIManager.Instance.ShowGameOverPanel("A WINNER IS YOU :D");
-        }
-        else
-        {
-            UIManager.Instance.ShowGameOverPanel("OH NO YOU LOST :(");
+            case "EASY":
+                diffValue = 2.5f;
+                break;
+            case "NORMAL":
+            default:
+                diffValue = 2.0f;
+                    break;
+            case "HARD":
+                diffValue = 1.5f;
+                break;
         }
     }
 }

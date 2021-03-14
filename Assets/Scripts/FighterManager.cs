@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +25,7 @@ public class FighterManager : Singleton<FighterManager>
         fighters.Remove(fighter);
         if (fighters.Count < 1)
         {
-            GameManager.Instance.GameOver(false);
+            LevelManager.Instance.GameOver(false);
         }
         if (UIManager.Instance != null)
         {
