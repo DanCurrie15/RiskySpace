@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Fighter : MonoBehaviour
 {
@@ -31,10 +32,7 @@ public class Fighter : MonoBehaviour
     }
 
     private void OnDisable()
-    {
-        SoundManager.Instance.PlaySoundEffect(SoundEffect.ShipExplosion);
-        Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
-
+    {     
         if (_orbitingPlanet != null)
         {
             _orbitingPlanet.GetComponent<Planet>().UnregisterFighter(this.gameObject);
@@ -93,5 +91,17 @@ public class Fighter : MonoBehaviour
         {
             SoundManager.Instance.PlaySoundEffect(SoundEffect.EnemyShipMoves);
         }
+    }
+
+    public void Explosion()
+    {
+        StartCoroutine(ExplosionWithWait());
+    }
+
+    IEnumerator ExplosionWithWait()
+    {
+        yield return new WaitForSeconds(0.1f);
+        SoundManager.Instance.PlaySoundEffect(SoundEffect.ShipExplosion);
+        Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
     }
 }

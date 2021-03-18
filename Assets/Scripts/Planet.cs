@@ -11,14 +11,17 @@ public class Planet : MonoBehaviour
     public Outline outline;
 
     public GameObject playerFighter;
+    public GameObject playerStation;
     public int orbitingPlayers;
     public GameObject enemyFighter;
+    public GameObject enemyStation;
     public int orbitingEnemies;
 
     [Range(0f, 1f)]
     public float _ownership; // 0 - player, 1 - enemy, 0.5 - neutral
 
     public List<GameObject> orbitingFighters = new List<GameObject>();
+    public GameObject orbitingStation;
 
     private float _nextSpawn;
 
@@ -31,6 +34,9 @@ public class Planet : MonoBehaviour
     private Color greenPlanet = new Color(0f, 1f, 0.5f, 1f);
     // purple colour is 0.5f, 0f, 1f, 1f
     private Color purplePlanet = new Color(0.5f, 0f, 1f, 1f);
+    // orange colour is 1f, 0.5f, 0f, 1f
+    private Color orangePlanet = new Color(1f, 0.5f, 0f, 1f);
+
     [Range(0f, 1f)]
     public float r;
     [Range(0f, 1f)]
@@ -105,7 +111,8 @@ public class Planet : MonoBehaviour
                     if (fighter.CompareTag("Player"))
                     {
                         SoundManager.Instance.PlaySoundEffect(SoundEffect.EnemyLaser);
-                        Destroy(fighter, 0.2f);
+                        fighter.GetComponent<Fighter>().Explosion();
+                        Destroy(fighter, 0.15f);
                         break;
                     }
                 }
@@ -114,7 +121,8 @@ public class Planet : MonoBehaviour
                     if (fighter.CompareTag("Enemy"))
                     {
                         SoundManager.Instance.PlaySoundEffect(SoundEffect.PlayerLaser);
-                        Destroy(fighter, 0.2f);
+                        fighter.GetComponent<Fighter>().Explosion();
+                        Destroy(fighter, 0.15f);
                         break;
                     }
                 }                
@@ -147,5 +155,26 @@ public class Planet : MonoBehaviour
     {
         GameObject _ship = Instantiate(ship, spawnPoint.transform.position, Quaternion.identity);
         _ship.GetComponent<Fighter>()._orbitingPlanet = this.gameObject;
+    }
+
+    public string Ownership(float player, float enemy1, float enemy2)
+    {
+        player = Mathf.Clamp(player, 0f, 1f);
+        enemy1 = Mathf.Clamp(enemy1, 0f, 1f);
+        enemy2 = Mathf.Clamp(enemy2, 0f, 1f);
+
+        if (player == 1f)
+        {
+            return "PLAYER";
+        }
+        else if (enemy1 == 1f)
+        {
+            return "ENEMY1";
+        }
+        else if (enemy2 == 1f)
+        {
+            return "ENEMY2";
+        }
+        return "NEUTRAL";
     }
 }

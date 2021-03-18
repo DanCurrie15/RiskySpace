@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class LevelManager : Singleton<LevelManager>
 {
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
+
+    public List<GameObject> planets = new List<GameObject>();
 
     private void Start()
     {
@@ -47,14 +50,16 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
+    // planet ownership: 0 - player, 1 - enemy
     public void GameOver(bool win)
     {
+        int planetStillOwned = planets.Count; ;
         if (win)
-        {
+        {           
             UIManager.Instance.ShowGameOverPanel("A WINNER IS YOU :D");
         }
         else
-        {
+        {         
             UIManager.Instance.ShowGameOverPanel("OH NO YOU LOST :(");
         }
     }
