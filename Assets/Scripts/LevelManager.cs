@@ -6,7 +6,11 @@ public class LevelManager : Singleton<LevelManager>
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
 
-    public List<GameObject> planets = new List<GameObject>();
+    public GameObject selectedPlanet
+    {
+        get { return selectedPlanet; }
+        private set { selectedPlanet = value; }
+    }
 
     private void Start()
     {
@@ -45,6 +49,20 @@ public class LevelManager : Singleton<LevelManager>
                 {
                     // deselect units
                     FighterManager.Instance.DeselectAllFighters();
+                    UIManager.Instance.HideBuildStationBtn();
+                }
+            }
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.transform.CompareTag("Planet"))
+                {
+                    UIManager.Instance.ShowBuildStationBtn(hit.transform.position);
+                    selectedPlanet = hit.transform.gameObject;
                 }
             }
         }
@@ -53,7 +71,6 @@ public class LevelManager : Singleton<LevelManager>
     // planet ownership: 0 - player, 1 - enemy
     public void GameOver(bool win)
     {
-        int planetStillOwned = planets.Count; ;
         if (win)
         {           
             UIManager.Instance.ShowGameOverPanel("A WINNER IS YOU :D");

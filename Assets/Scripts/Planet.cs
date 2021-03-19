@@ -157,6 +157,11 @@ public class Planet : MonoBehaviour
         _ship.GetComponent<Fighter>()._orbitingPlanet = this.gameObject;
     }
 
+    public void BuildStation(string team)
+    {
+
+    }
+
     public string Ownership(float player, float enemy1, float enemy2)
     {
         player = Mathf.Clamp(player, 0f, 1f);

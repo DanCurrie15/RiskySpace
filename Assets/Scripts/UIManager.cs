@@ -11,6 +11,7 @@ public class UIManager : Singleton<UIManager>
 
     public GameObject gameOverPanel;
     public Text gameOverPanelText;
+    public GameObject buildStationBtn;
 
     public void UpdateTeamAText(int count)
     {
@@ -31,5 +32,16 @@ public class UIManager : Singleton<UIManager>
     {
         gameOverPanel.SetActive(true);
         gameOverPanelText.text = panelText;
+    }
+
+    public void ShowBuildStationBtn(Vector3 postion)
+    {
+        buildStationBtn.transform.position = Camera.main.WorldToScreenPoint(postion);
+        buildStationBtn.SetActive(true);
+    }
+
+    public void HideBuildStationBtn()
+    {
+        buildStationBtn.SetActive(false);
     }
 }
