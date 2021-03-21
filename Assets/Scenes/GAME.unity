@@ -219,6 +219,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 2128734535}
+  - {fileID: 721196526}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,15 +238,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 2128734534}
+  stationSpawnPoint: {fileID: 721196525}
   planetRenderer: {fileID: 11388986}
   outline: {fileID: 11388991}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -1102,6 +1105,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 2022647275}
+  - {fileID: 731191957}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1120,15 +1124,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 2022647274}
+  stationSpawnPoint: {fileID: 731191956}
   planetRenderer: {fileID: 173123108}
   outline: {fileID: 173123113}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -2397,15 +2403,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 476709364}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 183208505}
   outline: {fileID: 183208501}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -3136,15 +3144,17 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 4
   spawnPoint: {fileID: 576383199}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 255295420}
   outline: {fileID: 255295416}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 0.5
@@ -3212,6 +3222,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255295414}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &291179501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291179502}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &291179502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291179501}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1715037207}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &315917678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,15 +3855,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 1959702891}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 315917684}
   outline: {fileID: 315917680}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -4699,15 +4741,17 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 4
   spawnPoint: {fileID: 670871182}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 363587616}
   outline: {fileID: 363587612}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -5378,15 +5422,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 627746149}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 377847745}
   outline: {fileID: 377847741}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -6057,15 +6103,17 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 4
   spawnPoint: {fileID: 1904696044}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 445646736}
   outline: {fileID: 445646732}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 1
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -6736,15 +6784,17 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 4
   spawnPoint: {fileID: 486436798}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 448511577}
   outline: {fileID: 448511573}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -6972,7 +7022,7 @@ Transform:
   m_GameObject: {fileID: 464483209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.75}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1431038943}
   m_RootOrder: 0
@@ -7969,15 +8019,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 1964893695}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 660266852}
   outline: {fileID: 660266848}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -8141,6 +8193,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 176775661}
+  - {fileID: 1362285480}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8159,15 +8212,17 @@ MonoBehaviour:
   orbitDistance: 7.5
   spawnRate: 2
   spawnPoint: {fileID: 176775660}
+  stationSpawnPoint: {fileID: 1362285479}
   planetRenderer: {fileID: 666225621}
   outline: {fileID: 666225626}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -9509,15 +9564,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 491595079}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 693698781}
   outline: {fileID: 693698777}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -9678,6 +9735,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &721196525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 721196526}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &721196526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721196525}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11388988}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &730318380
 GameObject:
   m_ObjectHideFlags: 0
@@ -9757,6 +9844,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730318380}
   m_CullTransparentMesh: 1
+--- !u!1 &731191956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731191957}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &731191957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731191956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 173123110}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &758511855
 GameObject:
   m_ObjectHideFlags: 0
@@ -10465,15 +10582,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 1303800361}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 814146797}
   outline: {fileID: 814146793}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -11144,15 +11263,17 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 4
   spawnPoint: {fileID: 1048892846}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 854756715}
   outline: {fileID: 854756711}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 1
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 0
@@ -11316,6 +11437,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 1444790661}
+  - {fileID: 1672245604}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11334,15 +11456,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 1444790660}
+  stationSpawnPoint: {fileID: 1672245603}
   planetRenderer: {fileID: 856588575}
   outline: {fileID: 856588580}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -12666,15 +12790,17 @@ MonoBehaviour:
   orbitDistance: 7.5
   spawnRate: 2
   spawnPoint: {fileID: 2042354555}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 1029354176}
   outline: {fileID: 1029354172}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -12868,6 +12994,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 775146182}
+  - {fileID: 1587769460}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12886,15 +13013,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 775146181}
+  stationSpawnPoint: {fileID: 1587769459}
   planetRenderer: {fileID: 1085900284}
   outline: {fileID: 1085900289}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -14054,15 +14183,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 457712633}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 1147629401}
   outline: {fileID: 1147629397}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -14226,6 +14357,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 253022599}
+  - {fileID: 1427873730}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14244,15 +14376,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 253022598}
+  stationSpawnPoint: {fileID: 1427873729}
   planetRenderer: {fileID: 1180758228}
   outline: {fileID: 1180758233}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -14834,7 +14968,7 @@ Transform:
   m_GameObject: {fileID: 1266697562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.75}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1682772748}
   m_RootOrder: 0
@@ -14924,6 +15058,36 @@ Transform:
   m_Father: {fileID: 814146792}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1362285479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1362285480}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1362285480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362285479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 666225623}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1422362728
 GameObject:
   m_ObjectHideFlags: 0
@@ -14989,6 +15153,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1427873729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1427873730}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1427873730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427873729}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1180758230}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1431038939
 GameObject:
@@ -15086,6 +15280,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 464483210}
+  - {fileID: 1777698281}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15104,15 +15299,17 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 4
   spawnPoint: {fileID: 464483209}
+  stationSpawnPoint: {fileID: 1777698280}
   planetRenderer: {fileID: 1431038941}
   outline: {fileID: 1431038946}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 1
+  ownership: 1
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 0
@@ -15769,16 +15966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAudioSource: {fileID: 2027798652}
   sfxAudioSource: {fileID: 669709417}
-  planets:
-  - {fileID: 666225619}
-  - {fileID: 1180758226}
-  - {fileID: 173123106}
-  - {fileID: 11388984}
-  - {fileID: 1085900282}
-  - {fileID: 856588573}
-  - {fileID: 1715037203}
-  - {fileID: 1682772744}
-  - {fileID: 1431038939}
+  selectedPlanet: {fileID: 0}
 --- !u!4 &1558681351
 Transform:
   m_ObjectHideFlags: 0
@@ -15792,6 +15980,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1587769459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1587769460}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1587769460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587769459}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1085900286}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592539860
 GameObject:
@@ -15876,9 +16094,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 105911266}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnBuildStationBtnPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16003,6 +16221,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623091680}
   m_CullTransparentMesh: 1
+--- !u!1 &1672245603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1672245604}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1672245604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672245603}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 856588577}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682772744
 GameObject:
   m_ObjectHideFlags: 0
@@ -16099,6 +16347,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1266697563}
+  - {fileID: 1776113923}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16117,15 +16366,17 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 4
   spawnPoint: {fileID: 1266697562}
+  stationSpawnPoint: {fileID: 1776113922}
   planetRenderer: {fileID: 1682772746}
   outline: {fileID: 1682772751}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 0
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 0.5
@@ -16778,6 +17029,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 538853031}
+  - {fileID: 291179502}
   m_Father: {fileID: 1555586290}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16796,15 +17048,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 538853030}
+  stationSpawnPoint: {fileID: 291179501}
   planetRenderer: {fileID: 1715037205}
   outline: {fileID: 1715037210}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 7573377903418032394, guid: 3efc976205a01419ea0d083ed6ed6cb2, type: 3}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 7927849820001290431, guid: 5e8c24ca221c844cb9f9e83595d0edc1, type: 3}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -17361,6 +17615,66 @@ MonoBehaviour:
     - {x: -0.6959634, y: 0.1768332, z: -0.6959634}
     - {x: -0.34139428, y: 0.6646524, z: -0.66459554}
     - {x: -0.17685792, y: 0.6958694, z: -0.6960511}
+--- !u!1 &1776113922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776113923}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1776113923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776113922}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1682772748}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1777698280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1777698281}
+  m_Layer: 0
+  m_Name: StationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1777698281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777698280}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1431038943}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794006421
 GameObject:
   m_ObjectHideFlags: 0
@@ -18097,15 +18411,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 489585125}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 1824287989}
   outline: {fileID: 1824287985}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -18806,15 +19122,17 @@ MonoBehaviour:
   orbitDistance: 4.5
   spawnRate: 3
   spawnPoint: {fileID: 230752626}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 1933431096}
   outline: {fileID: 1933431092}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0.5
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1
@@ -19757,15 +20075,17 @@ MonoBehaviour:
   orbitDistance: 2.25
   spawnRate: 4
   spawnPoint: {fileID: 342034534}
+  stationSpawnPoint: {fileID: 0}
   planetRenderer: {fileID: 1978175048}
   outline: {fileID: 1978175044}
   playerFighter: {fileID: 932696644312178023, guid: c380aad6a314546d9ad2533f7b10800b, type: 3}
   playerStation: {fileID: 0}
+  activeStation: {fileID: 0}
   orbitingPlayers: 0
   enemyFighter: {fileID: 3769341748212183618, guid: 97b1892b5904243d6b6a281b26486e70, type: 3}
   enemyStation: {fileID: 0}
   orbitingEnemies: 0
-  _ownership: 0
+  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   r: 1

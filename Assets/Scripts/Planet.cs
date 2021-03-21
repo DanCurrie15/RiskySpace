@@ -7,18 +7,20 @@ public class Planet : MonoBehaviour
     public float orbitDistance;
     public float spawnRate;
     public GameObject spawnPoint;
+    public GameObject stationSpawnPoint;
     public Renderer planetRenderer;
     public Outline outline;
 
     public GameObject playerFighter;
     public GameObject playerStation;
+    public GameObject activeStation;
     public int orbitingPlayers;
     public GameObject enemyFighter;
     public GameObject enemyStation;
     public int orbitingEnemies;
 
     [Range(0f, 1f)]
-    public float _ownership; // 0 - player, 1 - enemy, 0.5 - neutral
+    public float ownership; // 0 - player, 1 - enemy, 0.5 - neutral
 
     public List<GameObject> orbitingFighters = new List<GameObject>();
     public GameObject orbitingStation;
@@ -51,6 +53,7 @@ public class Planet : MonoBehaviour
         orbitingEnemies = 0;
         _nextSpawn = 0;
         _fightRate = 1;
+        activeStation = null;
         planetRenderer.material.color = new Color(r, g, b, 1f);
     }
 
@@ -86,17 +89,17 @@ public class Planet : MonoBehaviour
         orbitingPlayers = numPlayer;
         orbitingEnemies = numEnemy;
 
-        if (numPlayer > 0 && numEnemy == 0 && _ownership > 0)
+        if (numPlayer > 0 && numEnemy == 0 && ownership > 0 && activeStation == null)
         {
-            planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, purplePlanet, (1f - _ownership) * Time.deltaTime * 0.3f);
-            _ownership -= 0.0005f;
+            planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, purplePlanet, (1f - ownership) * Time.deltaTime * 0.3f);
+            ownership -= 0.0005f;
             outline.enabled = false;
-            
+
         }
-        else if (numEnemy > 0 && numPlayer == 0 && _ownership < 1)
+        else if (numEnemy > 0 && numPlayer == 0 && ownership < 1 && activeStation == null)
         {
-            planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, greenPlanet, _ownership * Time.deltaTime * 0.3f);
-            _ownership += 0.0005f;
+            planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, greenPlanet, ownership * Time.deltaTime * 0.3f);
+            ownership += 0.0005f;
             outline.enabled = false;
         }
         else if (numEnemy > 0 && numPlayer > 0 && (Time.time >_nextFight))
@@ -108,7 +111,13 @@ public class Planet : MonoBehaviour
             {
                 if (rand == 0)
                 {
-                    if (fighter.CompareTag("Player"))
+                    if (activeStation != null && activeStation.CompareTag("PlayerStation"))
+                    {
+                        SoundManager.Instance.PlaySoundEffect(SoundEffect.EnemyLaser);
+                        activeStation.GetComponent<Station>().SubtractHealth();
+                        break;
+                    }
+                    else if (fighter.CompareTag("Player"))
                     {
                         SoundManager.Instance.PlaySoundEffect(SoundEffect.EnemyLaser);
                         fighter.GetComponent<Fighter>().Explosion();
@@ -118,7 +127,13 @@ public class Planet : MonoBehaviour
                 }
                 else
                 {
-                    if (fighter.CompareTag("Enemy"))
+                    if (activeStation != null && activeStation.CompareTag("EnemyStation"))
+                    {
+                        SoundManager.Instance.PlaySoundEffect(SoundEffect.PlayerLaser);
+                        activeStation.GetComponent<Station>().SubtractHealth();
+                        break;
+                    }
+                    else if (fighter.CompareTag("Enemy"))
                     {
                         SoundManager.Instance.PlaySoundEffect(SoundEffect.PlayerLaser);
                         fighter.GetComponent<Fighter>().Explosion();
@@ -130,21 +145,26 @@ public class Planet : MonoBehaviour
         }
         else if ((Time.time > _nextSpawn))
         {
-            _nextSpawn = Time.time + spawnRate;         
+            _nextSpawn = Time.time + spawnRate;
 
-            if (_ownership <= 0 && numEnemy == 0)
+            if (activeStation != null && !activeStation.GetComponent<Station>()._isOrbiting)
             {
+                return;
+            }
+            else if (ownership <= 0 && numEnemy == 0)
+            {
+                
                 planetRenderer.material.color = purplePlanet;
                 SpawnShip(playerFighter);
-                _ownership = 0;
+                ownership = 0;
                 outline.enabled = true;
                 outline.OutlineColor = purplePlanet;
             }
-            else if (_ownership >= 1 && numPlayer == 0)
+            else if (ownership >= 1 && numPlayer == 0)
             {
                 planetRenderer.material.color = greenPlanet;
                 SpawnShip(enemyFighter);
-                _ownership = 1;
+                ownership = 1;
                 outline.enabled = true;
                 outline.OutlineColor = greenPlanet;
             }          
@@ -159,14 +179,25 @@ public class Planet : MonoBehaviour
 
     public void BuildStation(string team)
     {
-
+        GameObject _station = null;
+        if (team == "PLAYER")
+        {
+            _station = Instantiate(playerStation, stationSpawnPoint.transform.position, Quaternion.identity);
+            _station.GetComponent<Station>().BuildStation(this.gameObject);            
+        }
+        else if (team == "ENEMY")
+        {
+            _station = Instantiate(enemyStation, stationSpawnPoint.transform.position, Quaternion.identity);
+            _station.GetComponent<Station>().BuildStation(this.gameObject);
+        }
+        activeStation = _station;
     }
 
-    public string Ownership(float player, float enemy1, float enemy2)
+    public string Ownership(string team)
     {
-        player = Mathf.Clamp(player, 0f, 1f);
-        enemy1 = Mathf.Clamp(enemy1, 0f, 1f);
-        enemy2 = Mathf.Clamp(enemy2, 0f, 1f);
+        /*float player = Mathf.Clamp(player, 0f, 1f);
+        float enemy1 = Mathf.Clamp(enemy1, 0f, 1f);
+        float enemy2 = Mathf.Clamp(enemy2, 0f, 1f);
 
         if (player == 1f)
         {
@@ -179,7 +210,7 @@ public class Planet : MonoBehaviour
         else if (enemy2 == 1f)
         {
             return "ENEMY2";
-        }
+        }*/
         return "NEUTRAL";
     }
 }

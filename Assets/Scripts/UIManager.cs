@@ -44,4 +44,10 @@ public class UIManager : Singleton<UIManager>
     {
         buildStationBtn.SetActive(false);
     }
+
+    public void OnBuildStationBtnPress()
+    {
+        LevelManager.Instance.selectedPlanet.GetComponent<Planet>().BuildStation("PLAYER");
+        HideBuildStationBtn();
+    }
 }

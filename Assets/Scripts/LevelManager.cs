@@ -6,11 +6,7 @@ public class LevelManager : Singleton<LevelManager>
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
 
-    public GameObject selectedPlanet
-    {
-        get { return selectedPlanet; }
-        private set { selectedPlanet = value; }
-    }
+    public GameObject selectedPlanet;
 
     private void Start()
     {
@@ -59,7 +55,8 @@ public class LevelManager : Singleton<LevelManager>
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform.CompareTag("Planet"))
+                if (hit.transform.CompareTag("Planet") && (hit.transform.GetComponent<Planet>().ownership == 0)
+                    && hit.transform.GetComponent<Planet>().activeStation == null)
                 {
                     UIManager.Instance.ShowBuildStationBtn(hit.transform.position);
                     selectedPlanet = hit.transform.gameObject;

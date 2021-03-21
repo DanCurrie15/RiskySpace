@@ -93,7 +93,7 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet._ownership >= 1 && planet.orbitingEnemies > 1 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet.ownership >= 1 && planet.orbitingEnemies > 1 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
             {
                 selectedFighters.Add(planet.orbitingFighters[0]);
                 _foundMovableFighters = true;
@@ -103,7 +103,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 float distance = Mathf.Infinity;
                 foreach (Planet planetToLocate in planets)
                 {
-                    if (planetToLocate._ownership < 1 && planetToLocate.orbitingEnemies < 1)
+                    if (planetToLocate.ownership < 1 && planetToLocate.orbitingEnemies < 1)
                     {
                         float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
@@ -134,7 +134,7 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet._ownership >= 1 && planet.orbitingEnemies > 4 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet.ownership >= 1 && planet.orbitingEnemies > 4 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -147,7 +147,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 float distance = Mathf.Infinity;
                 foreach (Planet planetToLocate in planets)
                 {
-                    if (planetToLocate._ownership <= 1 && planetToLocate.orbitingEnemies < planetToLocate.orbitingPlayers)
+                    if (planetToLocate.ownership <= 1 && planetToLocate.orbitingEnemies < planetToLocate.orbitingPlayers)
                     {
                         float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
@@ -178,7 +178,7 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet._ownership >= 1 && planet.orbitingEnemies > 8 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet.ownership >= 1 && planet.orbitingEnemies > 8 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -191,7 +191,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 float distance = Mathf.Infinity;
                 foreach (Planet planetToLocate in planets)
                 {
-                    if (planetToLocate._ownership <= 1 && (planetToLocate.orbitingEnemies < 5 || planetToLocate.orbitingPlayers < 5) && (planet != planetToLocate))
+                    if (planetToLocate.ownership <= 1 && (planetToLocate.orbitingEnemies < 5 || planetToLocate.orbitingPlayers < 5) && (planet != planetToLocate))
                     {
                         float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
@@ -222,7 +222,7 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet._ownership >= 1 && planet.orbitingEnemies > 4 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet.ownership >= 1 && planet.orbitingEnemies > 4 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
             {
                 for (int i = 0; i < (planet.orbitingEnemies - 2); i++)
                 {
@@ -234,7 +234,7 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 foreach (Planet plantToLocate in planets)
                 {
-                    if (plantToLocate._ownership < 1 && (plantToLocate.orbitingPlayers > plantToLocate.orbitingEnemies))
+                    if (plantToLocate.ownership < 1 && (plantToLocate.orbitingPlayers > plantToLocate.orbitingEnemies))
                     {
                         moveToPlanet = plantToLocate.gameObject;
                     }
