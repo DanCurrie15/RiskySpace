@@ -1,10 +1,11 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class LevelManager : Singleton<LevelManager>
 {
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
+    public NavMeshSurface surface;
 
     public GameObject selectedPlanet;
 
@@ -12,6 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         musicAudioSource.volume = GameManager.Instance.musicVol;
         sfxAudioSource.volume = GameManager.Instance.skfVol;
+        surface.BuildNavMesh();
     }
 
     void Update()
