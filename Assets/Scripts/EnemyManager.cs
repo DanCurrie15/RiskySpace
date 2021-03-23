@@ -10,8 +10,11 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private bool _foundMovableFighters = false;
 
-    private float _actionRate = 2.0f;
+    private float _actionRate = 1.75f;
     private float _nextAction = 0f;
+
+    private float _buildStationRate = 15.0f;
+    private float _buildNextStation = 0f;
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 //Debug.Log("Enemy State: Opening");
                 OpeningState();
             }
-            else if (FighterManager.Instance.fighters.Count - fighters.Count > 30f)
+            else if (FighterManager.Instance.fighters.Count - fighters.Count > 20f)
             {
                 //Debug.Log("Enemy State: End Game Losing");
                 EndGameLosing();
@@ -134,6 +137,32 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
+            if (planet.ownership >= 1 && planet.orbitingPlayers < 1 && planet.activeStation == null && (Time.time > _buildNextStation))
+            {
+                bool firstCloset = false, secondClosest = false;
+                float distanceFirstCloset = 20f, distanceSecondClosest = 20f;
+                foreach(Planet nearPlanet in planets)
+                {
+                    float tempDistance = Vector3.Distance(planet.transform.position, nearPlanet.transform.position);
+                    if (tempDistance < distanceFirstCloset && (nearPlanet.ownership >= 1) && (nearPlanet.orbitingPlayers < 1))
+                    {
+                        distanceFirstCloset = tempDistance;
+                        firstCloset = true;
+                    }
+                    else if (tempDistance >= distanceFirstCloset && tempDistance < distanceSecondClosest
+                        && (nearPlanet.ownership >= 1) && (nearPlanet.orbitingPlayers < 1))
+                    {
+                        distanceSecondClosest = tempDistance;
+                        secondClosest = true;
+                    }
+                }
+                if (firstCloset && secondClosest)
+                {
+                    planet.BuildStation("ENEMY");
+                    _buildNextStation = Time.time + _buildStationRate;
+                    break;
+                }
+            }
             if (planet.ownership >= 1 && planet.orbitingEnemies > 4 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
             {
                 for (int i = 0; i < 3; i++)
