@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : Singleton<EnemyManager>
+public class EnemyManager : MonoBehaviour
 {
     public List<GameObject> fighters = new List<GameObject>();
     public List<GameObject> selectedFighters = new List<GameObject>();

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,16 +6,18 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject mainButtons;
     public GameObject settingsPanel;
+    public GameObject levelSelectPanel;
 
     public Text difficultyBtnText;
     public Slider musicVolume;
     public Slider sfxSlider;
 
-    public void StartGame()
+    public void StartGame(string gameType)
     {
         GameManager.Instance.musicVol = musicVolume.value;
         GameManager.Instance.skfVol = sfxSlider.value;
         GameManager.Instance.SetDifficulty(difficultyBtnText.text);
+        GameManager.Instance.gameType = gameType;
         SceneManager.LoadScene("GAME");
     }
 
@@ -29,6 +29,11 @@ public class MenuManager : MonoBehaviour
     public void HideOrShowSettingsPanel(bool toggle)
     {
         settingsPanel.SetActive(toggle);
+    }
+
+    public void HideOrShowLevelSelectPanel(bool toggle)
+    {
+        levelSelectPanel.SetActive(toggle);
     }
 
     public void OnDifficultyBtnPress()

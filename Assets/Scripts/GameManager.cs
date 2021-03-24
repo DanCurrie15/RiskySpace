@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
     public float diffValue = 2.0f;
     public float musicVol = 1.0f;
     public float skfVol = 0.5f;
+    public string gameType = "1v1";
 
     protected override void Awake()
     {

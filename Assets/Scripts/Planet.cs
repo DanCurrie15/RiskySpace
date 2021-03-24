@@ -30,6 +30,15 @@ public class Planet : MonoBehaviour
     private float _nextFight;
     private float _fightRate;
 
+    [Header("Planet Ownership")]
+    public string planetOwnedBy;
+    [Range(0f, 1f)]
+    private float _playerOwnership;
+    [Range(0f, 1f)]
+    private float _enemy1Ownership;
+    [Range(0f, 1f)]
+    private float _enemy2Ownership;
+
     [Header("Planet Colour")]
     // blank colour is 1f, 1f, 1f, 1f
     // green colour is 0f, 1f, 0.5f, 1f
@@ -195,22 +204,20 @@ public class Planet : MonoBehaviour
 
     public string Ownership(string team)
     {
-        /*float player = Mathf.Clamp(player, 0f, 1f);
-        float enemy1 = Mathf.Clamp(enemy1, 0f, 1f);
-        float enemy2 = Mathf.Clamp(enemy2, 0f, 1f);
 
-        if (player == 1f)
+
+        if (team == "PLAYER")
         {
             return "PLAYER";
         }
-        else if (enemy1 == 1f)
+        else if (team == "ENEMY1")
         {
             return "ENEMY1";
         }
-        else if (enemy2 == 1f)
+        else if (team == "ENEMY2")
         {
             return "ENEMY2";
-        }*/
+        }
         return "NEUTRAL";
     }
 }

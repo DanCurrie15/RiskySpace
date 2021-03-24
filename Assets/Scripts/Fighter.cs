@@ -11,6 +11,7 @@ public class Fighter : MonoBehaviour
     private bool _isOrbiting;
     private float _orbitSpeed = 20f;
     private float _travelSpeed = 20f;
+    private GameObject _enemyFighterManager1;
 
     void Start()
     {
@@ -27,7 +28,8 @@ public class Fighter : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Enemy"))
         {
-            EnemyManager.Instance.AddFighter(this.gameObject);
+            _enemyFighterManager1 = GameObject.Find("EnemyFighterManager1");
+            _enemyFighterManager1.GetComponent<EnemyManager>().AddFighter(this.gameObject);
         }
     }
 
@@ -50,10 +52,10 @@ public class Fighter : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Enemy"))
         {
-            if (EnemyManager.Instance != null)
+            if (_enemyFighterManager1 != null)
             {
-                EnemyManager.Instance.RemoveFighter(this.gameObject);
-                EnemyManager.Instance.RemoveSelectedFighter(this.gameObject);
+                _enemyFighterManager1.GetComponent<EnemyManager>().RemoveFighter(this.gameObject);
+                _enemyFighterManager1.GetComponent<EnemyManager>().RemoveSelectedFighter(this.gameObject);
             }
         }        
     }
