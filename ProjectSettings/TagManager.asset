@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - PlayerStation
   - EnemyStation
+  - Enemy2
+  - Enemy2Station
   layers:
   - Default
   - TransparentFX

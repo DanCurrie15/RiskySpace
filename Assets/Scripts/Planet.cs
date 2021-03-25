@@ -15,9 +15,14 @@ public class Planet : MonoBehaviour
     public GameObject playerStation;
     public GameObject activeStation;
     public int orbitingPlayers;
+
     public GameObject enemyFighter;
     public GameObject enemyStation;
     public int orbitingEnemies;
+
+    public GameObject enemy2Fighter;
+    public GameObject enemy2Station;
+    public int orbitingEnemies2;
 
     [Range(0f, 1f)]
     public float ownership; // 0 - player, 1 - enemy, 0.5 - neutral
@@ -80,6 +85,7 @@ public class Planet : MonoBehaviour
     {
         int numPlayer = 0;
         int numEnemy = 0;
+        int numEnemy2 = 0;
 
         foreach (GameObject fighter in orbitingFighters)
         {
@@ -89,6 +95,10 @@ public class Planet : MonoBehaviour
                 {
                     numPlayer++;
                 }
+                else if (fighter.CompareTag("Enemy2"))
+                {
+                    numEnemy2++;
+                }
                 else
                 {
                     numEnemy++;
@@ -97,6 +107,7 @@ public class Planet : MonoBehaviour
         }
         orbitingPlayers = numPlayer;
         orbitingEnemies = numEnemy;
+        orbitingEnemies2 = numEnemy2;
 
         if (numPlayer > 0 && numEnemy == 0 && ownership > 0 && activeStation == null)
         {
@@ -199,25 +210,50 @@ public class Planet : MonoBehaviour
             _station = Instantiate(enemyStation, stationSpawnPoint.transform.position, Quaternion.identity);
             _station.GetComponent<Station>().BuildStation(this.gameObject);
         }
+        else if (team == "ENEMY2")
+        {
+            _station = Instantiate(enemy2Station, stationSpawnPoint.transform.position, Quaternion.identity);
+            _station.GetComponent<Station>().BuildStation(this.gameObject);
+        }
         activeStation = _station;
     }
 
-    public string Ownership(string team)
+    public void Ownership(string team)
     {
-
-
         if (team == "PLAYER")
         {
-            return "PLAYER";
+            _playerOwnership += 0.0005f;
+            _enemy1Ownership -= 0.0005f;
+            _enemy2Ownership -= 0.0005f;
+            if (_playerOwnership >= 1f)
+            {
+                planetOwnedBy = "PLAYER";
+            }
         }
         else if (team == "ENEMY1")
         {
-            return "ENEMY1";
+            _playerOwnership -= 0.0005f;
+            _enemy1Ownership += 0.0005f;
+            _enemy2Ownership -= 0.0005f;
+            if (_playerOwnership >= 1f)
+            {
+                planetOwnedBy = "ENEMY1";
+            }
         }
         else if (team == "ENEMY2")
         {
-            return "ENEMY2";
+            _playerOwnership -= 0.0005f;
+            _enemy1Ownership -= 0.0005f;
+            _enemy2Ownership += 0.0005f;
+            if (_playerOwnership >= 1f)
+            {
+                planetOwnedBy = "ENEMY2";
+            }
         }
-        return "NEUTRAL";
+
+        if (_playerOwnership < 1f && _enemy1Ownership < 1f && _enemy2Ownership < 1f)
+        {
+            planetOwnedBy = "NEUTRAL";
+        }
     }
 }

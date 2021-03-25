@@ -158,7 +158,15 @@ public class EnemyManager : MonoBehaviour
                 }
                 if (firstCloset && secondClosest)
                 {
-                    planet.BuildStation("ENEMY");
+                    if (this.gameObject.name == "EnemyFighterManager1")
+                    {
+                        planet.BuildStation("ENEMY");
+                    }
+                    else
+                    {
+                        planet.BuildStation("ENEMY2");
+
+                    }
                     _buildNextStation = Time.time + _buildStationRate;
                     break;
                 }
