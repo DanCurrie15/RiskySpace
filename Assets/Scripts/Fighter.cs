@@ -12,6 +12,7 @@ public class Fighter : MonoBehaviour
     private float _orbitSpeed = 20f;
     private float _travelSpeed = 20f;
     private GameObject _enemyFighterManager1;
+    private GameObject _enemyFighterManager2;
 
     void Start()
     {
@@ -20,16 +21,21 @@ public class Fighter : MonoBehaviour
     }
 
     private void OnEnable()
-    {
+    {        
         if (this.gameObject.CompareTag("Player"))
         {
-            FighterManager.Instance.AddFighter(this.gameObject);
             outline.enabled = false;
+            FighterManager.Instance.AddFighter(this.gameObject);            
         }
         else if (this.gameObject.CompareTag("Enemy"))
         {
             _enemyFighterManager1 = GameObject.Find("EnemyFighterManager1");
             _enemyFighterManager1.GetComponent<EnemyManager>().AddFighter(this.gameObject);
+        }
+        else if (this.gameObject.CompareTag("Enemy2"))
+        {
+            _enemyFighterManager2 = GameObject.Find("EnemyFighterManager2");
+            _enemyFighterManager2.GetComponent<EnemyManager>().AddFighter(this.gameObject);
         }
     }
 
@@ -57,7 +63,15 @@ public class Fighter : MonoBehaviour
                 _enemyFighterManager1.GetComponent<EnemyManager>().RemoveFighter(this.gameObject);
                 _enemyFighterManager1.GetComponent<EnemyManager>().RemoveSelectedFighter(this.gameObject);
             }
-        }        
+        }
+        else if (this.gameObject.CompareTag("Enemy2"))
+        {
+            if (_enemyFighterManager2 != null)
+            {
+                _enemyFighterManager2.GetComponent<EnemyManager>().RemoveFighter(this.gameObject);
+                _enemyFighterManager2.GetComponent<EnemyManager>().RemoveSelectedFighter(this.gameObject);
+            }
+        }
     }
 
     void Update()
@@ -89,7 +103,7 @@ public class Fighter : MonoBehaviour
         {
             SoundManager.Instance.PlaySoundEffect(SoundEffect.PlayerShipMoves);
         }
-        else if (this.gameObject.CompareTag("Enemy"))
+        else
         {
             SoundManager.Instance.PlaySoundEffect(SoundEffect.EnemyShipMoves);
         }

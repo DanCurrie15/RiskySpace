@@ -76,7 +76,7 @@ public class LevelManager : Singleton<LevelManager>
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform.CompareTag("Planet") && (hit.transform.GetComponent<Planet>().ownership == 0)
+                if (hit.transform.CompareTag("Planet") && (hit.transform.GetComponent<Planet>().planetOwnedBy == "PLAYER")
                     && hit.transform.GetComponent<Planet>().activeStation == null)
                 {
                     UIManager.Instance.ShowBuildStationBtn(hit.transform.position);

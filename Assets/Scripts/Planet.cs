@@ -24,8 +24,8 @@ public class Planet : MonoBehaviour
     public GameObject enemy2Station;
     public int orbitingEnemies2;
 
-    [Range(0f, 1f)]
-    public float ownership; // 0 - player, 1 - enemy, 0.5 - neutral
+    //[Range(0f, 1f)]
+    //public float ownership; // 0 - player, 1 - enemy, 0.5 - neutral
 
     public List<GameObject> orbitingFighters = new List<GameObject>();
     public GameObject orbitingStation;
@@ -66,7 +66,7 @@ public class Planet : MonoBehaviour
         orbitingPlayers = 0;
         orbitingEnemies = 0;
         _nextSpawn = 0;
-        _fightRate = 1;
+        _fightRate = 1f;
         activeStation = null;
         planetRenderer.material.color = new Color(r, g, b, 1f);
     }
@@ -109,24 +109,40 @@ public class Planet : MonoBehaviour
         orbitingEnemies = numEnemy;
         orbitingEnemies2 = numEnemy2;
 
-        if (numPlayer > 0 && numEnemy == 0 && ownership > 0 && activeStation == null)
+        if (numPlayer > 0 && numEnemy == 0 && numEnemy2 == 0 && planetOwnedBy != "PLAYER" && activeStation == null)
         {
-            planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, purplePlanet, (1f - ownership) * Time.deltaTime * 0.3f);
-            ownership -= 0.0005f;
+            Ownership("PLAYER");
             outline.enabled = false;
 
         }
-        else if (numEnemy > 0 && numPlayer == 0 && ownership < 1 && activeStation == null)
+        else if (numEnemy > 0 && numPlayer == 0 && numEnemy2 == 0 && planetOwnedBy != "ENEMY" && activeStation == null)
         {
-            planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, greenPlanet, ownership * Time.deltaTime * 0.3f);
-            ownership += 0.0005f;
+            Ownership("ENEMY");
             outline.enabled = false;
         }
-        else if (numEnemy > 0 && numPlayer > 0 && (Time.time >_nextFight))
+        else if (numEnemy2 > 0 && numPlayer == 0 && numEnemy == 0 && planetOwnedBy != "ENEMY2" && activeStation == null)
+        {
+            Ownership("ENEMY2");
+            outline.enabled = false;
+        }
+        else if ((Time.time > _nextFight) && ((numEnemy > 0 && numPlayer > 0) || (numEnemy > 0 && numEnemy2 > 0)
+                || (numEnemy2 > 0 && numPlayer > 0) || (numPlayer > 0 && numEnemy > 0 && numEnemy2 > 0)))
         {
             outline.enabled = false;
             _nextFight = Time.time + _fightRate;
-            int rand = Random.Range(0, 2);
+            int rand = Random.Range(0, 3);
+            if (numPlayer == 0 && rand == 0)
+            {
+                rand = 1;
+            }
+            else if (numEnemy == 0 && rand == 1)
+            {
+                rand = 2;
+            }
+            else if (numEnemy2 == 0 && rand == 2)
+            {
+                rand = 1;
+            }
             foreach(GameObject fighter in orbitingFighters)
             {
                 if (rand == 0)
@@ -145,7 +161,7 @@ public class Planet : MonoBehaviour
                         break;
                     }
                 }
-                else
+                else if (rand == 1)
                 {
                     if (activeStation != null && activeStation.CompareTag("EnemyStation"))
                     {
@@ -160,7 +176,23 @@ public class Planet : MonoBehaviour
                         Destroy(fighter, 0.15f);
                         break;
                     }
-                }                
+                }
+                else if (rand == 2)
+                {
+                    if (activeStation != null && activeStation.CompareTag("Enemy2Station"))
+                    {
+                        SoundManager.Instance.PlaySoundEffect(SoundEffect.PlayerLaser);
+                        activeStation.GetComponent<Station>().SubtractHealth();
+                        break;
+                    }
+                    else if (fighter.CompareTag("Enemy2"))
+                    {
+                        SoundManager.Instance.PlaySoundEffect(SoundEffect.PlayerLaser);
+                        fighter.GetComponent<Fighter>().Explosion();
+                        Destroy(fighter, 0.15f);
+                        break;
+                    }
+                }
             }
         }
         else if ((Time.time > _nextSpawn))
@@ -171,23 +203,27 @@ public class Planet : MonoBehaviour
             {
                 return;
             }
-            else if (ownership <= 0 && numEnemy == 0)
-            {
-                
+            else if (planetOwnedBy == "PLAYER" && numEnemy == 0 && numEnemy2 == 0)
+            {                
                 planetRenderer.material.color = purplePlanet;
                 SpawnShip(playerFighter);
-                ownership = 0;
                 outline.enabled = true;
                 outline.OutlineColor = purplePlanet;
             }
-            else if (ownership >= 1 && numPlayer == 0)
+            else if (planetOwnedBy == "ENEMY" && numPlayer == 0 && numEnemy2 == 0)
             {
                 planetRenderer.material.color = greenPlanet;
                 SpawnShip(enemyFighter);
-                ownership = 1;
                 outline.enabled = true;
                 outline.OutlineColor = greenPlanet;
-            }          
+            }
+            else if (planetOwnedBy == "ENEMY2" && numPlayer == 0 && numEnemy == 0)
+            {
+                planetRenderer.material.color = orangePlanet;
+                SpawnShip(enemy2Fighter);
+                outline.enabled = true;
+                outline.OutlineColor = orangePlanet;
+            }
         }
     }
 
@@ -222,32 +258,53 @@ public class Planet : MonoBehaviour
     {
         if (team == "PLAYER")
         {
-            _playerOwnership += 0.0005f;
-            _enemy1Ownership -= 0.0005f;
-            _enemy2Ownership -= 0.0005f;
             if (_playerOwnership >= 1f)
             {
                 planetOwnedBy = "PLAYER";
             }
-        }
-        else if (team == "ENEMY1")
-        {
-            _playerOwnership -= 0.0005f;
-            _enemy1Ownership += 0.0005f;
-            _enemy2Ownership -= 0.0005f;
-            if (_playerOwnership >= 1f)
+            else if (_enemy1Ownership > 0 || _enemy2Ownership > 0)
             {
-                planetOwnedBy = "ENEMY1";
+                _enemy1Ownership -= 0.0005f;
+                _enemy2Ownership -= 0.0005f;
+            }
+            else
+            {
+                _playerOwnership += 0.0005f;
+                planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, purplePlanet, _playerOwnership * Time.deltaTime * 0.3f);
+            }
+        }
+        else if (team == "ENEMY")
+        {          
+            if (_enemy1Ownership >= 1f)
+            {
+                planetOwnedBy = "ENEMY";
+            }
+            else if (_playerOwnership > 0 || _enemy2Ownership > 0)
+            {
+                _playerOwnership -= 0.0005f;
+                _enemy2Ownership -= 0.0005f;
+            }
+            else
+            {
+                _enemy1Ownership += 0.0005f;
+                planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, greenPlanet, _enemy1Ownership * Time.deltaTime * 0.3f);
             }
         }
         else if (team == "ENEMY2")
-        {
-            _playerOwnership -= 0.0005f;
-            _enemy1Ownership -= 0.0005f;
-            _enemy2Ownership += 0.0005f;
-            if (_playerOwnership >= 1f)
+        {             
+            if (_enemy2Ownership >= 1f)
             {
                 planetOwnedBy = "ENEMY2";
+            }
+            else if (_playerOwnership > 0 || _enemy1Ownership > 0)
+            {
+                _playerOwnership -= 0.0005f;
+                _enemy1Ownership -= 0.0005f;
+            }
+            else
+            {
+                _enemy2Ownership += 0.0005f;
+                planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, orangePlanet, _enemy2Ownership * Time.deltaTime * 0.3f);
             }
         }
 

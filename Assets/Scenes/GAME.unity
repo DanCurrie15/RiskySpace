@@ -251,10 +251,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: NEUTRAL
   r: 1
   g: 1
   b: 1
@@ -1171,10 +1170,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: NEUTRAL
   r: 1
   g: 1
   b: 1
@@ -2454,7 +2452,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -3199,10 +3196,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: PLAYER
   r: 0.5
   g: 0
   b: 1
@@ -3914,7 +3910,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -4804,7 +4799,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -5489,7 +5483,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -6174,10 +6167,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: ENEMY2
   r: 1
   g: 0.5
   b: 0
@@ -6859,7 +6851,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -8177,7 +8168,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -8374,10 +8364,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: NEUTRAL
   r: 1
   g: 1
   b: 1
@@ -9730,7 +9719,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -10752,7 +10740,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -11437,10 +11424,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: ENEMY
   r: 0
   g: 1
   b: 0.5
@@ -11634,10 +11620,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: NEUTRAL
   r: 1
   g: 1
   b: 1
@@ -13002,7 +12987,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -13229,10 +13213,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: NEUTRAL
   r: 1
   g: 1
   b: 1
@@ -14403,7 +14386,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -14600,10 +14582,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: NEUTRAL
   r: 1
   g: 1
   b: 1
@@ -15243,6 +15224,7 @@ MonoBehaviour:
   - {fileID: 1715037208}
   - {fileID: 1682772749}
   - {fileID: 1431038944}
+  enemyName: ENEMY
 --- !u!1 &1303800361
 GameObject:
   m_ObjectHideFlags: 0
@@ -15527,10 +15509,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 1
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: ENEMY
   r: 0
   g: 1
   b: 0.5
@@ -16604,10 +16585,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 0
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: PLAYER
   r: 0.5
   g: 0
   b: 1
@@ -17290,10 +17270,9 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 0}
   enemy2Station: {fileID: 0}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
-  planetOwnedBy: 
+  planetOwnedBy: NEUTRAL
   r: 1
   g: 1
   b: 1
@@ -18657,7 +18636,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -19372,7 +19350,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -20329,7 +20306,6 @@ MonoBehaviour:
   enemy2Fighter: {fileID: 3769341748212183618, guid: 431029dd05c4b4203acda73b9e27038a, type: 3}
   enemy2Station: {fileID: 7927849820001290431, guid: f40126eb3b8874ec4b7e55e85781c056, type: 3}
   orbitingEnemies2: 0
-  ownership: 0.5
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: 
@@ -20675,6 +20651,7 @@ MonoBehaviour:
   - {fileID: 1715037208}
   - {fileID: 1682772749}
   - {fileID: 1431038944}
+  enemyName: ENEMY2
 --- !u!4 &2028797265
 Transform:
   m_ObjectHideFlags: 0

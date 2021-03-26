@@ -32,7 +32,6 @@ public class Station : MonoBehaviour
                 _isBuilding = false;
                 transform.localScale = new Vector3(1f, 1f, 1f);
                 _isOrbiting = true;
-                Debug.Log("Station - finished building");
             }
         }
     }
@@ -51,7 +50,6 @@ public class Station : MonoBehaviour
 
     public void BuildStation(GameObject planetToOrbit)
     {
-        Debug.Log("Station - Build Station");
         _orbitingPlanet = planetToOrbit;
         _isBuilding = true;
     }
