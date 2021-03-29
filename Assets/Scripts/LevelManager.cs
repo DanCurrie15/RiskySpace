@@ -10,7 +10,8 @@ public class LevelManager : Singleton<LevelManager>
 
     public Camera mainCamera;
     public List<GameObject> levelLayout = new List<GameObject>();
-    public GameObject enemyFighterManager2;
+    public EnemyManager enemyFighterManager1;
+    public EnemyManager enemyFighterManager2;
 
     public GameObject selectedPlanet;
 
@@ -20,14 +21,14 @@ public class LevelManager : Singleton<LevelManager>
         {
             levelLayout[0].SetActive(false);
             levelLayout[1].SetActive(true);
-            enemyFighterManager2.SetActive(true);
+            enemyFighterManager2.gameObject.SetActive(true);
             mainCamera.fieldOfView = 70f;
         }
         else
         {
             levelLayout[0].SetActive(true);
             levelLayout[1].SetActive(false);
-            enemyFighterManager2.SetActive(false);
+            enemyFighterManager2.gameObject.SetActive(false);
             mainCamera.fieldOfView = 60f;
         }
         musicAudioSource.volume = GameManager.Instance.musicVol;
@@ -86,14 +87,13 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
-    // planet ownership: 0 - player, 1 - enemy
     public void GameOver(bool win)
     {
-        if (win)
+        if (win && enemyFighterManager1.fighters.Count == 0 && enemyFighterManager2.fighters.Count == 0)
         {           
             UIManager.Instance.ShowGameOverPanel("A WINNER IS YOU :D");
         }
-        else
+        else if (!win)
         {         
             UIManager.Instance.ShowGameOverPanel("OH NO YOU LOST :(");
         }

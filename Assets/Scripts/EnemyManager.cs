@@ -6,7 +6,9 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> fighters = new List<GameObject>();
     public List<GameObject> selectedFighters = new List<GameObject>();
 
-    public List<Planet> planets = new List<Planet>();
+    private List<Planet> planets = new List<Planet>();
+    public GameObject planets1v1;
+    public GameObject planets1v1v1;
 
     private bool _foundMovableFighters = false;
 
@@ -21,30 +23,48 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         _actionRate = GameManager.Instance.diffValue;
+        if (GameManager.Instance.gameType == "1v1v1")
+        {
+            foreach(Transform child in planets1v1v1.transform)
+            {
+                planets.Add(child.GetComponent<Planet>());
+            }
+        }
+        else
+        {
+            foreach (Transform child in planets1v1.transform)
+            {
+                planets.Add(child.GetComponent<Planet>());
+            }
+        }
     }
 
     void Update()
     {
         if (selectedFighters.Count < 1 && Time.time > _nextAction)
         {
+            for (int i = 0; i < planets.Count; i++)
+            {
+                Planet temp = planets[i];
+                int randomIndex = Random.Range(i, planets.Count);
+                planets[i] = planets[randomIndex];
+                planets[randomIndex] = temp;
+            }
+
             if (fighters.Count < 10 && FighterManager.Instance.fighters.Count < 10)
             {
-                //Debug.Log("Enemy State: Opening");
                 OpeningState();
             }
-            else if (FighterManager.Instance.fighters.Count - fighters.Count > 20f)
+            else if (FighterManager.Instance.fighters.Count - fighters.Count > 35f)
             {
-                //Debug.Log("Enemy State: End Game Losing");
                 EndGameLosing();
             }
-            else if (fighters.Count - FighterManager.Instance.fighters.Count > 30f)
+            else if (fighters.Count - FighterManager.Instance.fighters.Count > 35f)
             {
-                //Debug.Log("Enemy State: End Game Winning");
                 EndGameWinning();
             }
             else
             {
-                //Debug.Log("Enemy State: Mid Game");
                 MidGameState();
             }
             _nextAction = Time.time + _actionRate;
@@ -110,21 +130,21 @@ public class EnemyManager : MonoBehaviour
 
     private void OpeningState()
     {
+        
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet.planetOwnedBy == enemyName && planet.orbitingEnemies > 1 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet.planetOwnedBy == enemyName && planet.NumOrbitingFighters(enemyName) > 1 && planet.NumOrbitingOpponents(enemyName) < 1 && !_foundMovableFighters)
             {
                 selectedFighters.Add(planet.orbitingFighters[0]);
                 _foundMovableFighters = true;
-                Debug.Log("found planet with fighters");
             }
             if (_foundMovableFighters)
             {
                 float distance = Mathf.Infinity;
                 foreach (Planet planetToLocate in planets)
                 {
-                    if (planetToLocate.planetOwnedBy != enemyName && planetToLocate.orbitingEnemies < 1)
+                    if (planetToLocate.planetOwnedBy != enemyName && planetToLocate.NumOrbitingFighters(enemyName) < 1)
                     {
                         float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
@@ -136,7 +156,6 @@ public class EnemyManager : MonoBehaviour
                 }
                 if (moveToPlanet != null)
                 {
-                    Debug.Log("found planet to move to");
                     MoveFighters(moveToPlanet);
                     _foundMovableFighters = false;
                     break;
@@ -156,21 +175,20 @@ public class EnemyManager : MonoBehaviour
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet.planetOwnedBy == enemyName && (planet.orbitingPlayers < 1 || (enemyName == "ENEMY" ? planet.orbitingEnemies2 < 1 : planet.orbitingEnemies < 1)) && planet.activeStation == null && (Time.time > _buildNextStation))
+            if (planet.planetOwnedBy == enemyName && planet.NumOrbitingOpponents(enemyName) < 1 && planet.activeStation == null && (Time.time > _buildNextStation))
             {
                 bool firstCloset = false, secondClosest = false;
                 float distanceFirstCloset = 20f, distanceSecondClosest = 20f;
                 foreach(Planet nearPlanet in planets)
                 {
                     float tempDistance = Vector3.Distance(planet.transform.position, nearPlanet.transform.position);
-                    if (tempDistance < distanceFirstCloset && (nearPlanet.planetOwnedBy == enemyName)
-                        && (nearPlanet.orbitingPlayers < 1 || (enemyName == "ENEMY" ? nearPlanet.orbitingEnemies2 < 1 : nearPlanet.orbitingEnemies < 1)))
+                    if (tempDistance < distanceFirstCloset && (nearPlanet.planetOwnedBy == enemyName) && nearPlanet.NumOrbitingOpponents(enemyName) < 1)
                     {
                         distanceFirstCloset = tempDistance;
                         firstCloset = true;
                     }
                     else if (tempDistance >= distanceFirstCloset && tempDistance < distanceSecondClosest
-                        && (nearPlanet.planetOwnedBy == enemyName) && (nearPlanet.orbitingPlayers < 1))
+                        && (nearPlanet.planetOwnedBy == enemyName) && (nearPlanet.NumOrbitingOpponents(enemyName) < 1))
                     {
                         distanceSecondClosest = tempDistance;
                         secondClosest = true;
@@ -191,7 +209,7 @@ public class EnemyManager : MonoBehaviour
                     break;
                 }
             }
-            if (planet.planetOwnedBy == enemyName && planet.orbitingEnemies > 4 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet.planetOwnedBy == enemyName && planet.NumOrbitingFighters(enemyName) > 4 && planet.NumOrbitingOpponents(enemyName) < 1 && !_foundMovableFighters)
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -204,7 +222,7 @@ public class EnemyManager : MonoBehaviour
                 float distance = Mathf.Infinity;
                 foreach (Planet planetToLocate in planets)
                 {
-                    if (planetToLocate.planetOwnedBy != enemyName && planetToLocate.orbitingEnemies < planetToLocate.orbitingPlayers)
+                    if (planetToLocate.planetOwnedBy != enemyName && (planetToLocate.NumOrbitingFighters(enemyName) < planetToLocate.NumOrbitingOpponents(enemyName) || planetToLocate.NumOrbitingOpponents(enemyName) < 1))
                     {
                         float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
@@ -235,7 +253,7 @@ public class EnemyManager : MonoBehaviour
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet.planetOwnedBy == enemyName && planet.orbitingEnemies > 8 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet.planetOwnedBy == enemyName && planet.NumOrbitingFighters(enemyName) > 8 && planet.NumOrbitingOpponents(enemyName) < 1 && !_foundMovableFighters)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -248,7 +266,7 @@ public class EnemyManager : MonoBehaviour
                 float distance = Mathf.Infinity;
                 foreach (Planet planetToLocate in planets)
                 {
-                    if (planetToLocate.planetOwnedBy != enemyName && (planetToLocate.orbitingEnemies < 5 || planetToLocate.orbitingPlayers < 5) && (planet != planetToLocate))
+                    if (planetToLocate.planetOwnedBy != enemyName && (planetToLocate.NumOrbitingFighters(enemyName) < 5 || planetToLocate.NumOrbitingOpponents(enemyName) < 5) && (planet != planetToLocate))
                     {
                         float tempDistance = Vector3.Distance(planet.transform.position, planetToLocate.transform.position);
                         if (tempDistance < distance)
@@ -279,9 +297,9 @@ public class EnemyManager : MonoBehaviour
         foreach (Planet planet in planets)
         {
             GameObject moveToPlanet = null;
-            if (planet.planetOwnedBy == enemyName && planet.orbitingEnemies > 4 && planet.orbitingPlayers < 1 && !_foundMovableFighters)
+            if (planet.planetOwnedBy == enemyName && planet.NumOrbitingFighters(enemyName) > 4 && planet.NumOrbitingOpponents(enemyName) < 1 && !_foundMovableFighters)
             {
-                for (int i = 0; i < (planet.orbitingEnemies - 2); i++)
+                for (int i = 0; i < (planet.NumOrbitingFighters(enemyName) - 2); i++)
                 {
                     selectedFighters.Add(planet.orbitingFighters[i]);
                     _foundMovableFighters = true;
@@ -291,7 +309,7 @@ public class EnemyManager : MonoBehaviour
             {
                 foreach (Planet plantToLocate in planets)
                 {
-                    if (plantToLocate.planetOwnedBy != enemyName && (plantToLocate.orbitingPlayers > plantToLocate.orbitingEnemies))
+                    if (plantToLocate.planetOwnedBy != enemyName && (plantToLocate.NumOrbitingOpponents(enemyName) > plantToLocate.NumOrbitingFighters(enemyName)))
                     {
                         moveToPlanet = plantToLocate.gameObject;
                     }

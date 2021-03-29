@@ -31,17 +31,26 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateTeamAText(int count)
     {
-        teamAText.text = "TEAM A UNITS: " + count;
+        if (teamAText != null)
+        {
+            teamAText.text = "TEAM A UNITS: " + count;
+        }        
     }
 
     public void UpdateTeamBText(int count)
     {
-        teamBText.text = "TEAM B UNITS: " + count;
+        if (teamBText != null)
+        {
+            teamBText.text = "TEAM B UNITS: " + count;
+        }        
     }
 
     public void UpdateTeamCText(int count)
     {
-        teamCText.text = "TEAM C UNITS: " + count;
+        if (teamCText != null)
+        {
+            teamCText.text = "TEAM C UNITS: " + count;
+        }        
     }
 
     public void ReloadScene(string scene)

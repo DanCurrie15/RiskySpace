@@ -44,6 +44,8 @@ public class Planet : MonoBehaviour
     [Range(0f, 1f)]
     private float _enemy2Ownership;
 
+    private const float OWNERSHIP_CHANGE_RATE = 0.0007f;
+
     [Header("Planet Colour")]
     // blank colour is 1f, 1f, 1f, 1f
     // green colour is 0f, 1f, 0.5f, 1f
@@ -52,6 +54,8 @@ public class Planet : MonoBehaviour
     private Color purplePlanet = new Color(0.5f, 0f, 1f, 1f);
     // orange colour is 1f, 0.5f, 0f, 1f
     private Color orangePlanet = new Color(1f, 0.5f, 0f, 1f);
+    // neutral / grey colour
+    private Color neutralPlanet = new Color(1f, 1f, 1f, 1f);
 
     [Range(0f, 1f)]
     public float r;
@@ -264,12 +268,13 @@ public class Planet : MonoBehaviour
             }
             else if (_enemy1Ownership > 0 || _enemy2Ownership > 0)
             {
-                _enemy1Ownership -= 0.0005f;
-                _enemy2Ownership -= 0.0005f;
+                _enemy1Ownership -= OWNERSHIP_CHANGE_RATE;
+                _enemy2Ownership -= OWNERSHIP_CHANGE_RATE;
+                planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, neutralPlanet, Mathf.Clamp01(_enemy1Ownership + _enemy2Ownership) * Time.deltaTime * 0.3f);
             }
             else
             {
-                _playerOwnership += 0.0005f;
+                _playerOwnership += OWNERSHIP_CHANGE_RATE;
                 planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, purplePlanet, _playerOwnership * Time.deltaTime * 0.3f);
             }
         }
@@ -281,12 +286,13 @@ public class Planet : MonoBehaviour
             }
             else if (_playerOwnership > 0 || _enemy2Ownership > 0)
             {
-                _playerOwnership -= 0.0005f;
-                _enemy2Ownership -= 0.0005f;
+                _playerOwnership -= OWNERSHIP_CHANGE_RATE;
+                _enemy2Ownership -= OWNERSHIP_CHANGE_RATE;
+                planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, neutralPlanet, Mathf.Clamp01(_playerOwnership + _enemy2Ownership) * Time.deltaTime * 0.3f);
             }
             else
             {
-                _enemy1Ownership += 0.0005f;
+                _enemy1Ownership += OWNERSHIP_CHANGE_RATE;
                 planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, greenPlanet, _enemy1Ownership * Time.deltaTime * 0.3f);
             }
         }
@@ -298,12 +304,13 @@ public class Planet : MonoBehaviour
             }
             else if (_playerOwnership > 0 || _enemy1Ownership > 0)
             {
-                _playerOwnership -= 0.0005f;
-                _enemy1Ownership -= 0.0005f;
+                _playerOwnership -= OWNERSHIP_CHANGE_RATE;
+                _enemy1Ownership -= OWNERSHIP_CHANGE_RATE;
+                planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, neutralPlanet, Mathf.Clamp01(_enemy1Ownership + _playerOwnership) * Time.deltaTime * 0.3f);
             }
             else
             {
-                _enemy2Ownership += 0.0005f;
+                _enemy2Ownership += OWNERSHIP_CHANGE_RATE;
                 planetRenderer.material.color = Color.Lerp(planetRenderer.material.color, orangePlanet, _enemy2Ownership * Time.deltaTime * 0.3f);
             }
         }
@@ -312,5 +319,39 @@ public class Planet : MonoBehaviour
         {
             planetOwnedBy = "NEUTRAL";
         }
+    }
+
+    public int NumOrbitingOpponents(string team)
+    {
+        if (team == "PLAYER")
+        {
+            return orbitingEnemies + orbitingEnemies2;
+        }
+        else if (team == "ENEMY")
+        {
+            return orbitingEnemies2 + orbitingPlayers;
+        }
+        else if (team == "ENEMY2")
+        {
+            return orbitingPlayers + orbitingEnemies;
+        }
+        return 0;
+    }
+
+    public int NumOrbitingFighters(string team)
+    {
+        if (team == "PLAYER")
+        {
+            return orbitingPlayers;
+        }
+        else if (team == "ENEMY")
+        {
+            return orbitingEnemies;
+        }
+        else if (team == "ENEMY2")
+        {
+            return orbitingEnemies2;
+        }
+        return 0;
     }
 }
