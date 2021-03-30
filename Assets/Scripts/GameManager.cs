@@ -20,11 +20,11 @@ public class GameManager : Singleton<GameManager>
         switch (diff)
         {
             case "EASY":
-                diffValue = 2.75f;
+                diffValue = 2.5f;
                 break;
             case "NORMAL":
             default:
-                diffValue = 1.5f;
+                diffValue = 1.25f;
                     break;
             case "HARD":
                 diffValue = 0.25f;
