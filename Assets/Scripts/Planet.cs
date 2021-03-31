@@ -137,15 +137,18 @@ public class Planet : MonoBehaviour
             int rand = Random.Range(0, 3);
             if (numPlayer == 0 && rand == 0)
             {
-                rand = 1;
+                rand = Random.Range(1, 3);
             }
             else if (numEnemy == 0 && rand == 1)
             {
-                rand = 2;
+                while (rand == 1)
+                {
+                    rand = Random.Range(0, 3);
+                }
             }
             else if (numEnemy2 == 0 && rand == 2)
             {
-                rand = 1;
+                rand = Random.Range(0, 2);
             }
             foreach(GameObject fighter in orbitingFighters)
             {

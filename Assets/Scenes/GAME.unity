@@ -3285,9 +3285,9 @@ MonoBehaviour:
   orbitingFighters: []
   orbitingStation: {fileID: 0}
   planetOwnedBy: PLAYER
-  r: 0.5
-  g: 0
-  b: 1
+  r: 1
+  g: 0.5
+  b: 0
 --- !u!135 &255295419
 SphereCollider:
   m_ObjectHideFlags: 0
